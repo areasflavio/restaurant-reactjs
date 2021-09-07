@@ -1,7 +1,18 @@
 import React from 'react';
+import FoodList from './components/FoodList';
+import Header from './components/Header';
 
-function App() {
-  return <h1>Hello World</h1>;
-}
+import GlobalStyle from './styles/global';
+
+const App: React.FC = () => {
+	return (
+		<>
+			<GlobalStyle />
+
+			<Header />
+			<FoodList />
+		</>
+	);
+};
 
 export default App;

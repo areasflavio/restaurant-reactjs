@@ -4,15 +4,17 @@ export default createGlobalStyle`
  :root {
 	 	--main: #1e90ff;
 		--secondary: #FCC735;
+		--secondary-light: #FDDB7E;
     --background: #fff;
 
-		--success: #87CC1A;
-		--success400: #ADE04D;
+		--success: #3ABC4B;
+		--success400: #67D66B;
 		--info: #3EDDF9;
 		--danger: #FF4B30;
 
-    --text-title: #fff;
-    --text-body: #969cb3;
+    --header-title: #fff;
+    --text-title: #000;
+    --text-body: #2B2001;
   }
 
   * {

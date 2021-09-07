@@ -15,7 +15,7 @@ export const Container = styled.div`
 	strong {
 		font-size: 1.5rem;
 
-		color: var(--text-title);
+		color: var(--header-title);
 	}
 
 	button {
@@ -23,7 +23,7 @@ export const Container = styled.div`
 		align-items: center;
 
 		background: transparent;
-		color: var(--text-title);
+		color: var(--header-title);
 
 		transition: all 0.2s;
 
