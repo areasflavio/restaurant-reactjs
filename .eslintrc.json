@@ -24,6 +24,7 @@
 		"react-hooks/exhaustive-deps": "warn",
 		"react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
 		"import/prefer-default-export": "off",
+		"import/no-duplicates": "off",
 		"no-use-before-define": "off",
 		"@typescript-eslint/no-use-before-define": ["error"],
 		"import/extensions": [
@@ -33,7 +34,9 @@
 				"ts": "never",
 				"tsx": "never"
 			}
-		]
+		],
+		"react/jsx-props-no-spreading": "off",
+		"react/prop-types": "off"
 	},
 	"settings": {
 		"import/resolver": {
