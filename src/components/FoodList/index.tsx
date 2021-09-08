@@ -3,7 +3,7 @@ import { FiEdit3, FiTrash } from 'react-icons/fi';
 
 import {
 	Container,
-	Food,
+	FoodCard,
 	FoodControls,
 	FoodEditControl,
 	FoodDeleteControl,
@@ -15,7 +15,7 @@ const FoodList: React.FC = () => {
 	return (
 		<Container>
 			{foodArray.map(food => (
-				<Food key={food}>
+				<FoodCard key={food} available>
 					<header>
 						<img
 							src="https://images.unsplash.com/photo-1618163633808-dbd8a9f658ce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1120&q=80"
@@ -42,7 +42,7 @@ const FoodList: React.FC = () => {
 
 						<div>Disponível</div>
 					</footer>
-				</Food>
+				</FoodCard>
 			))}
 		</Container>
 	);

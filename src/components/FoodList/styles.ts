@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface IFoodCardProps {
+	available: boolean;
+}
 
 export const Container = styled.main`
 	display: grid;
@@ -12,7 +16,7 @@ export const Container = styled.main`
 	padding: 0 12rem 8rem;
 `;
 
-export const Food = styled.li`
+export const FoodCard = styled.div<IFoodCardProps>`
 	display: flex;
 	flex-direction: column;
 
@@ -22,11 +26,25 @@ export const Food = styled.li`
 
 	background: var(--secondary-light);
 
+	${props =>
+		!props.available &&
+		css`
+			opacity: 0.4;
+		`}
+
+	transition: all .2s;
+
+	&:hover {
+		transform: scale(1.05, 1.05);
+	}
+
 	img {
 		max-width: 100%;
 		object-fit: cover;
 
 		border-radius: 0.25rem 0.25rem 0 0;
+
+		background: var(--background);
 	}
 
 	section {
@@ -71,20 +89,32 @@ export const FoodControls = styled.div`
 	gap: 0.5rem;
 `;
 
-export const FoodEditControl = styled.div`
+export const FoodEditControl = styled.button`
 	display: flex;
 
 	padding: 0.5rem;
 	border-radius: 0.25rem;
 
 	background: var(--background);
+
+	transition: all 0.2s;
+
+	&:hover {
+		opacity: 0.8;
+	}
 `;
 
-export const FoodDeleteControl = styled.div`
+export const FoodDeleteControl = styled.button`
 	display: flex;
 
 	padding: 0.5rem;
 	border-radius: 0.25rem;
 
 	background: var(--background);
+
+	transition: all 0.2s;
+
+	&:hover {
+		opacity: 0.8;
+	}
 `;
