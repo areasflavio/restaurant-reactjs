@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import 'reactjs-popup/dist/index.css';
+
 export default createGlobalStyle`
  :root {
 	 	--main: #1e90ff;
@@ -8,7 +10,7 @@ export default createGlobalStyle`
     --background: #fff;
 
 		--success: #3ABC4B;
-		--success400: #67D66B;
+		--success-light: #67D66B;
 		--info: #3EDDF9;
 		--danger: #FF4B30;
 

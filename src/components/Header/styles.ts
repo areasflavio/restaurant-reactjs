@@ -20,20 +20,25 @@ export const Container = styled.div`
 
 	button {
 		display: flex;
+		flex-direction: row;
 		align-items: center;
 
-		background: transparent;
-		color: var(--header-title);
+		border: 0;
+		border-radius: 0.25rem;
+
+		font-weight: 600;
+		color: #fff;
+
+		background: var(--success);
 
 		transition: all 0.2s;
 
 		&:hover {
-			opacity: 0.9;
+			filter: brightness(0.9);
 		}
 
 		small {
 			padding: 1rem 1.25rem;
-			border-radius: 0.25rem 0 0 0.25rem;
 
 			background: var(--success);
 		}
@@ -44,7 +49,7 @@ export const Container = styled.div`
 			padding: 1rem;
 			border-radius: 0 0.25rem 0.25rem 0;
 
-			background: var(--success400);
+			background: var(--success-light);
 		}
 	}
 `;

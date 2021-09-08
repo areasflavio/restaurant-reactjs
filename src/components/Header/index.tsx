@@ -1,6 +1,8 @@
 import React from 'react';
 import { FiPlusSquare } from 'react-icons/fi';
 
+import FoodModal from '../FoodModal';
+
 import { Container } from './styles';
 
 const Header: React.FC = () => {
@@ -8,13 +10,17 @@ const Header: React.FC = () => {
 		<Container>
 			<strong>Restaurant ReactJS</strong>
 
-			<button type="button">
-				<small>Novo Prato</small>
+			<FoodModal
+				trigger={
+					<button type="button">
+						<small>Novo Prato</small>
 
-				<div>
-					<FiPlusSquare size={24} />
-				</div>
-			</button>
+						<div>
+							<FiPlusSquare size={24} />
+						</div>
+					</button>
+				}
+			/>
 		</Container>
 	);
 };
