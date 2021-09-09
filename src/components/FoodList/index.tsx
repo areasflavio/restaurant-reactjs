@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiEdit3, FiTrash } from 'react-icons/fi';
+
+import api from '../../services/api';
 
 import {
 	Container,
@@ -9,25 +11,36 @@ import {
 	FoodDeleteControl,
 } from './styles';
 
-const foodArray = [1, 2, 3, 4, 5, 6, 7, 8];
+interface IFoodData {
+	id: number;
+	name: string;
+	image: string;
+	price: string;
+	description: string;
+	available: boolean;
+}
 
 const FoodList: React.FC = () => {
+	const [foods, setFoods] = useState<IFoodData[]>([]);
+
+	useEffect(() => {
+		api.get('/foods').then(response => setFoods(response.data));
+	}, []);
+
 	return (
 		<Container>
-			{foodArray.map(food => (
-				<FoodCard key={food} available>
+			{foods.map(food => (
+				<FoodCard key={food.id} available={food.available}>
 					<header>
-						<img
-							src="https://images.unsplash.com/photo-1618163633808-dbd8a9f658ce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1120&q=80"
-							alt="Spaghetti"
-						/>
+						<img src={food.image} alt={food.name} />
 					</header>
 
 					<section>
-						<h2>Spaghetti</h2>
-						<p>Delicious noodles with vegetables.</p>
+						<h2>{food.name}</h2>
 
-						<strong>R$ 19.90</strong>
+						<p>{food.description}</p>
+
+						<strong>$ {food.price}</strong>
 					</section>
 
 					<footer>
@@ -40,7 +53,7 @@ const FoodList: React.FC = () => {
 							</FoodDeleteControl>
 						</FoodControls>
 
-						<div>Disponível</div>
+						<div>{food.available ? 'Available' : 'Unavailable'}</div>
 					</footer>
 				</FoodCard>
 			))}

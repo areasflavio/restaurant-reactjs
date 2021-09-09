@@ -1,0 +1,44 @@
+{
+	"foods": [
+		{
+			"id": 1,
+			"name": "Strawberry Tart",
+			"description": "A strawberry tart with vanilla ice cream and chopped pistachios",
+			"price": "29.90",
+			"available": false,
+			"image": "https://images.unsplash.com/photo-1624300654594-517c05bacb8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=480&h=480&q=80"
+		},
+		{
+			"id": 2,
+			"name": "Avocado and Egg Toast",
+			"description": "A delicious toast with avocado and egg.",
+			"price": "21.90",
+			"available": true,
+			"image": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=480&h=480&q=80"
+		},
+		{
+			"id": 3,
+			"name": "Pancake",
+			"description": "Dutch baby pancake with fruit and maple syrup.",
+			"price": "35.90",
+			"available": true,
+			"image": "https://images.unsplash.com/photo-1624300457843-b0f8497d5cc5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=480&h=480&q=80"
+		},
+		{
+			"id": 4,
+			"name": "Crab Spaghetti",
+			"description": "A crab spaghetti with sauce and fine herbs.",
+			"price": "45.90",
+			"available": true,
+			"image": "https://images.unsplash.com/photo-1498603273107-62080b9e4963?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=480&h=480&q=80"
+		},
+		{
+			"id": 5,
+			"name": "Steak Dinner",
+			"description": "Steak with veggies and sauce.",
+			"price": "39.90",
+			"available": false,
+			"image": "https://images.unsplash.com/photo-1432139509613-5c4255815697?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=480&h=480&q=80"
+		}
+	]
+}

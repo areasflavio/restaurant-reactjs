@@ -11,6 +11,7 @@ export const Container = styled.main`
 	grid-gap: 2rem;
 
 	width: 100%;
+	height: 60rem;
 
 	margin-top: -5rem;
 	padding: 0 12rem 8rem;
@@ -40,7 +41,8 @@ export const FoodCard = styled.div<IFoodCardProps>`
 
 	img {
 		max-width: 100%;
-		object-fit: cover;
+		max-height: 30rem;
+		object-fit: contain;
 
 		border-radius: 0.25rem 0.25rem 0 0;
 
@@ -76,6 +78,7 @@ export const FoodCard = styled.div<IFoodCardProps>`
 		align-items: center;
 		justify-content: space-between;
 
+		margin-top: auto;
 		padding: 1rem 1.5rem;
 		border-radius: 0 0 0.25rem 0.25rem;
 
@@ -100,7 +103,7 @@ export const FoodEditControl = styled.button`
 	transition: all 0.2s;
 
 	&:hover {
-		opacity: 0.8;
+		color: var(--secondary);
 	}
 `;
 
@@ -115,6 +118,6 @@ export const FoodDeleteControl = styled.button`
 	transition: all 0.2s;
 
 	&:hover {
-		opacity: 0.8;
+		color: var(--secondary);
 	}
 `;
