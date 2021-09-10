@@ -14,6 +14,7 @@ interface IFoodData {
 interface FoodContextData {
 	foods: IFoodData[];
 	handleAddFood: (food: Omit<IFoodData, 'id' | 'available'>) => void;
+	handleUpdateFood: (food: IFoodData) => void;
 }
 
 const FoodContext = createContext<FoodContextData>({} as FoodContextData);
@@ -29,20 +30,24 @@ const FoodProvider: React.FC = ({ children }) => {
 		food: Omit<IFoodData, 'id' | 'available'>,
 	): Promise<void> {
 		try {
-			console.log(food);
+			const response = await api.post<IFoodData>('/foods', {
+				id: foods.length + 1,
+				available: true,
+				...food,
+			});
 
-			// await api.post<IFoodData>('/foods', {
-			// 	id: foods.length + 1,
-			// 	available: true,
-			// 	...food,
-			// });
+			setFoods(previousFoods => [...previousFoods, response.data]);
 		} catch (err) {
 			console.error(err);
 		}
 	}
 
+	async function handleUpdateFood(food: IFoodData): Promise<void> {
+		console.log(food);
+	}
+
 	return (
-		<FoodContext.Provider value={{ foods, handleAddFood }}>
+		<FoodContext.Provider value={{ foods, handleAddFood, handleUpdateFood }}>
 			{children}
 		</FoodContext.Provider>
 	);
