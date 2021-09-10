@@ -3,6 +3,8 @@ import React from 'react';
 import FoodList from './components/FoodList';
 import Header from './components/Header';
 
+import { FoodProvider } from './context/FoodContext';
+
 import GlobalStyle from './styles/global';
 
 const App: React.FC = () => {
@@ -10,8 +12,10 @@ const App: React.FC = () => {
 		<>
 			<GlobalStyle />
 
-			<Header />
-			<FoodList />
+			<FoodProvider>
+				<Header />
+				<FoodList />
+			</FoodProvider>
 		</>
 	);
 };

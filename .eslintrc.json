@@ -20,12 +20,15 @@
 	"plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
 	"rules": {
 		"prettier/prettier": "error",
+		"react/jsx-no-bind": "off",
+		"react/require-default-props": "off",
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn",
 		"react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
 		"import/prefer-default-export": "off",
 		"import/no-duplicates": "off",
 		"no-use-before-define": "off",
+		"no-param-reassign": "off",
 		"@typescript-eslint/no-use-before-define": ["error"],
 		"import/extensions": [
 			"error",

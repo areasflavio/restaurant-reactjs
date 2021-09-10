@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FiEdit3, FiTrash } from 'react-icons/fi';
 
-import api from '../../services/api';
+import { useFood } from '../../context/FoodContext';
 
 import {
 	Container,
@@ -11,21 +11,8 @@ import {
 	FoodDeleteControl,
 } from './styles';
 
-interface IFoodData {
-	id: number;
-	name: string;
-	image: string;
-	price: string;
-	description: string;
-	available: boolean;
-}
-
 const FoodList: React.FC = () => {
-	const [foods, setFoods] = useState<IFoodData[]>([]);
-
-	useEffect(() => {
-		api.get('/foods').then(response => setFoods(response.data));
-	}, []);
+	const { foods } = useFood();
 
 	return (
 		<Container>
