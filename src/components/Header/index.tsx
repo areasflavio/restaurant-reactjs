@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiPlusSquare } from 'react-icons/fi';
 
-import FoodModal from '../FoodModal';
+import AddFoodModal from '../FoodModal/AddFoodModal';
 
 import { Container } from './styles';
 
@@ -10,10 +10,10 @@ const Header: React.FC = () => {
 		<Container>
 			<strong>Restaurant ReactJS</strong>
 
-			<FoodModal
+			<AddFoodModal
 				trigger={
 					<button type="button">
-						<small>Novo Prato</small>
+						<small>New Plate</small>
 
 						<div>
 							<FiPlusSquare size={24} />

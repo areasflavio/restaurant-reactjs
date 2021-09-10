@@ -3,6 +3,8 @@ import { FiEdit3, FiTrash } from 'react-icons/fi';
 
 import { useFood } from '../../context/FoodContext';
 
+import EditFoodModal from '../FoodModal/EditFoodModal';
+
 import {
 	Container,
 	FoodCard,
@@ -32,9 +34,14 @@ const FoodList: React.FC = () => {
 
 					<footer>
 						<FoodControls>
-							<FoodEditControl>
-								<FiEdit3 size={20} />
-							</FoodEditControl>
+							<EditFoodModal
+								editFood={food}
+								trigger={
+									<FoodEditControl>
+										<FiEdit3 size={20} />
+									</FoodEditControl>
+								}
+							/>
 							<FoodDeleteControl>
 								<FiTrash size={20} />
 							</FoodDeleteControl>
