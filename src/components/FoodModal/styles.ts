@@ -27,17 +27,6 @@ export const Modal = styled(Popup)`
 
 			margin: 2rem 0;
 
-			input {
-				flex: 1;
-				width: 100%;
-
-				border: 0;
-				border-radius: 0.25rem;
-				padding: 1rem 0.5rem;
-
-				margin: 0.5rem 0;
-			}
-
 			div {
 				display: grid;
 				grid-template-columns: 2fr 1fr;
