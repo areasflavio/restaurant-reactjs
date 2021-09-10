@@ -1,13 +1,13 @@
-import React, { useRef } from 'react';
-import { FormHandles, SubmitHandler } from '@unform/core';
+import React, { useCallback, useRef } from 'react';
+import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiCheckSquare } from 'react-icons/fi';
 
-import Input from '../Input';
+import Input from '../../Input';
 
-import { useFood } from '../../context/FoodContext';
+import { useFood } from '../../../context/FoodContext';
 
-import { Modal } from './styles';
+import { Modal } from '../styles';
 
 interface FormData {
 	name: string;
@@ -20,13 +20,18 @@ interface IModalProps {
 	trigger: JSX.Element;
 }
 
-const FoodModal: React.FC<IModalProps> = ({ trigger }) => {
+const AddFoodModal: React.FC<IModalProps> = ({ trigger }) => {
 	const formRef = useRef<FormHandles>(null);
+
 	const { handleAddFood } = useFood();
 
-	const handleSubmit: SubmitHandler<FormData> = data => {
-		handleAddFood(data);
-	};
+	const handleSubmit = useCallback(
+		async (data: FormData) => {
+			handleAddFood(data);
+		},
+		[handleAddFood],
+	);
+
 	return (
 		<Modal trigger={trigger} modal>
 			<h1>New Plate</h1>
@@ -68,4 +73,4 @@ const FoodModal: React.FC<IModalProps> = ({ trigger }) => {
 	);
 };
 
-export default FoodModal;
+export default AddFoodModal;
