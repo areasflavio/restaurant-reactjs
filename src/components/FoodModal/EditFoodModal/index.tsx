@@ -1,4 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
+import * as Yup from 'yup';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiCheckSquare } from 'react-icons/fi';
@@ -23,6 +24,10 @@ interface IModalProps {
 	editFood: IFoodData;
 }
 
+interface Errors {
+	[key: string]: string;
+}
+
 const EditFoodModal: React.FC<IModalProps> = ({ trigger, editFood }) => {
 	const formRef = useRef<FormHandles>(null);
 
@@ -32,7 +37,30 @@ const EditFoodModal: React.FC<IModalProps> = ({ trigger, editFood }) => {
 
 	const handleSubmit = useCallback(
 		async (data: Omit<IFoodData, 'id' | 'available'>) => {
-			handleUpdateFood({ id: editFood.id, available: isAvailable, ...data });
+			try {
+				const schema = Yup.object().shape({
+					name: Yup.string().required('Name is required'),
+					image: Yup.string().required('Image URL is required'),
+					price: Yup.string().required('Price is required'),
+					description: Yup.string().required('Description is required'),
+				});
+
+				await schema.validate(data, {
+					abortEarly: false,
+				});
+
+				handleUpdateFood({ id: editFood.id, available: isAvailable, ...data });
+			} catch (err) {
+				const validationErrors: Errors = {};
+
+				if (err instanceof Yup.ValidationError) {
+					err.inner.forEach(error => {
+						if (error.path) validationErrors[error.path] = error.message;
+					});
+				}
+
+				formRef.current?.setErrors(validationErrors);
+			}
 		},
 		[editFood.id, handleUpdateFood, isAvailable],
 	);

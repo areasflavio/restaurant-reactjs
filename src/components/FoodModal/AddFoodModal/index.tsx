@@ -1,4 +1,5 @@
 import React, { useCallback, useRef } from 'react';
+import * as Yup from 'yup';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiCheckSquare } from 'react-icons/fi';
@@ -7,7 +8,7 @@ import Input from '../../Input';
 
 import { useFood } from '../../../context/FoodContext';
 
-import { Modal } from '../styles';
+import { Modal, SubmitButton } from '../styles';
 
 interface FormData {
 	name: string;
@@ -20,6 +21,10 @@ interface IModalProps {
 	trigger: JSX.Element;
 }
 
+interface Errors {
+	[key: string]: string;
+}
+
 const AddFoodModal: React.FC<IModalProps> = ({ trigger }) => {
 	const formRef = useRef<FormHandles>(null);
 
@@ -27,7 +32,30 @@ const AddFoodModal: React.FC<IModalProps> = ({ trigger }) => {
 
 	const handleSubmit = useCallback(
 		async (data: FormData) => {
-			handleAddFood(data);
+			try {
+				const schema = Yup.object().shape({
+					name: Yup.string().required('Name is required'),
+					image: Yup.string().required('Image URL is required'),
+					price: Yup.string().required('Price is required'),
+					description: Yup.string().required('Description is required'),
+				});
+
+				await schema.validate(data, {
+					abortEarly: false,
+				});
+
+				handleAddFood(data);
+			} catch (err) {
+				const validationErrors: Errors = {};
+
+				if (err instanceof Yup.ValidationError) {
+					err.inner.forEach(error => {
+						if (error.path) validationErrors[error.path] = error.message;
+					});
+				}
+
+				formRef.current?.setErrors(validationErrors);
+			}
 		},
 		[handleAddFood],
 	);
@@ -61,13 +89,17 @@ const AddFoodModal: React.FC<IModalProps> = ({ trigger }) => {
 					placeholder=""
 				/>
 
-				<button type="submit">
-					<small>New Plate</small>
+				<footer>
+					<div />
 
-					<div>
-						<FiCheckSquare size={24} />
-					</div>
-				</button>
+					<SubmitButton type="submit">
+						<small>New Plate</small>
+
+						<div className="icon-container">
+							<FiCheckSquare size={24} />
+						</div>
+					</SubmitButton>
+				</footer>
 			</Form>
 		</Modal>
 	);
