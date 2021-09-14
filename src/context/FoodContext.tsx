@@ -15,6 +15,7 @@ interface FoodContextData {
 	foods: IFoodData[];
 	handleAddFood: (food: Omit<IFoodData, 'id' | 'available'>) => void;
 	handleUpdateFood: (food: IFoodData) => void;
+	handleDeleteFood: (id: number) => void;
 }
 
 const FoodContext = createContext<FoodContextData>({} as FoodContextData);
@@ -56,8 +57,22 @@ const FoodProvider: React.FC = ({ children }) => {
 		}
 	}
 
+	async function handleDeleteFood(id: number): Promise<void> {
+		try {
+			await api.delete(`/foods/${id}`);
+
+			setFoods(previousFoods =>
+				previousFoods.filter(previousFood => previousFood.id !== id),
+			);
+		} catch (err) {
+			console.error(err);
+		}
+	}
+
 	return (
-		<FoodContext.Provider value={{ foods, handleAddFood, handleUpdateFood }}>
+		<FoodContext.Provider
+			value={{ foods, handleAddFood, handleUpdateFood, handleDeleteFood }}
+		>
 			{children}
 		</FoodContext.Provider>
 	);

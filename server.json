@@ -2,11 +2,11 @@
   "foods": [
     {
       "id": 1,
-      "name": "Strawberry Tart",
+      "available": false,
       "image": "https://images.unsplash.com/photo-1624300654594-517c05bacb8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=480&h=480&q=80",
+      "name": "Strawberry Tart",
       "price": "29.90",
-      "description": "A strawberry tart with vanilla ice cream and chopped pistachios",
-      "available": true
+      "description": "A strawberry tart with vanilla ice cream and chopped pistachios"
     },
     {
       "id": 2,
@@ -47,22 +47,6 @@
       "price": "31.99",
       "description": "A chicken skewer with a selection of vegetables",
       "available": false
-    },
-    {
-      "id": 7,
-      "available": true,
-      "image": "https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=480&h=480&q=80",
-      "name": "Chicken with veggies",
-      "price": "31.99",
-      "description": "A chicken skewer with a selection of vegetables"
-    },
-    {
-      "id": 8,
-      "available": true,
-      "image": "https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=480&h=480&q=80",
-      "name": "Chicken with veggies",
-      "price": "29.99",
-      "description": "A chicken skewer with a selection of vegetables"
     }
   ]
 }
