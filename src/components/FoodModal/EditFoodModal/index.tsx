@@ -31,10 +31,10 @@ const EditFoodModal: React.FC<IModalProps> = ({ trigger, editFood }) => {
 	const { handleUpdateFood } = useFood();
 
 	const handleSubmit = useCallback(
-		async (data: Omit<IFoodData, 'id'>) => {
-			handleUpdateFood({ id: editFood.id, ...data });
+		async (data: Omit<IFoodData, 'id' | 'available'>) => {
+			handleUpdateFood({ id: editFood.id, available: isAvailable, ...data });
 		},
-		[editFood.id, handleUpdateFood],
+		[editFood.id, handleUpdateFood, isAvailable],
 	);
 
 	const handleAvailability = useCallback(checked => {
@@ -71,7 +71,10 @@ const EditFoodModal: React.FC<IModalProps> = ({ trigger, editFood }) => {
 				/>
 
 				<footer>
-					<ToggleSwitch onChange={handleAvailability} checked={isAvailable} />
+					<div>
+						<span>Available</span>
+						<ToggleSwitch onChange={handleAvailability} checked={isAvailable} />
+					</div>
 
 					<SubmitButton type="submit">
 						<small>Edit Plate</small>

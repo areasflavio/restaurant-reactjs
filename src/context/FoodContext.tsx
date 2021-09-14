@@ -43,7 +43,17 @@ const FoodProvider: React.FC = ({ children }) => {
 	}
 
 	async function handleUpdateFood(food: IFoodData): Promise<void> {
-		console.log(food);
+		try {
+			const response = await api.put<IFoodData>(`/foods/${food.id}`, food);
+
+			setFoods(previousFoods =>
+				previousFoods.map(previousFood =>
+					previousFood.id === food.id ? response.data : previousFood,
+				),
+			);
+		} catch (err) {
+			console.error(err);
+		}
 	}
 
 	return (

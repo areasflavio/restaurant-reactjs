@@ -36,10 +36,15 @@ export const Modal = styled(Popup)`
 
 			footer {
 				display: flex;
-				align-items: center;
+				align-items: flex-end;
 				justify-content: space-between;
 
-				margin-top: 3rem;
+				margin-top: 1rem;
+
+				> div {
+					display: flex;
+					flex-direction: column;
+				}
 			}
 		}
 	}
