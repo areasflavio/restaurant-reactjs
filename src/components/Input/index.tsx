@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useField } from '@unform/core';
 
 import { Container } from './styles';
@@ -14,6 +14,19 @@ const Input: React.FC<InputProps> = ({ name, label, ...rest }: InputProps) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const { fieldName, defaultValue, registerField, error } = useField(name);
+
+	const [isFocused, setIsFocused] = useState(false);
+	const [isFilled, setIsFilled] = useState(false);
+
+	const handleInputFocus = useCallback(() => {
+		setIsFocused(true);
+	}, []);
+
+	const handleInputBlur = useCallback(() => {
+		setIsFocused(false);
+
+		setIsFilled(!!inputRef.current?.value);
+	}, []);
 
 	useEffect(() => {
 		registerField({
@@ -32,13 +45,15 @@ const Input: React.FC<InputProps> = ({ name, label, ...rest }: InputProps) => {
 	}, [fieldName, registerField]);
 
 	return (
-		<Container>
+		<Container isFocused={isFocused} isFilled={isFilled} isErrored={!!error}>
 			{label && <label htmlFor={fieldName}>{label}</label>}
 
 			<input
 				id={fieldName}
 				ref={inputRef}
 				defaultValue={defaultValue}
+				onFocus={handleInputFocus}
+				onBlur={handleInputBlur}
 				{...rest}
 			/>
 
