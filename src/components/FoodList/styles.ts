@@ -11,7 +11,7 @@ export const Container = styled.main`
 	grid-gap: 2rem;
 
 	width: 100%;
-	height: 60rem;
+	height: 100%;
 
 	margin-top: -5rem;
 	padding: 0 12rem 8rem;
@@ -56,19 +56,21 @@ export const FoodCard = styled.div<IFoodCardProps>`
 
 		padding: 1rem 1.5rem;
 
+		height: 100%;
+
 		h2 {
 			color: var(--text-title);
+			margin-bottom: 1rem;
 		}
 
 		p {
-			margin: 1rem 0 2rem;
+			margin: 0 0 2rem;
+			margin-top: auto;
 
 			color: var(--text-body);
 		}
 
 		strong {
-			margin-top: auto;
-
 			font-size: 1.5rem;
 		}
 	}

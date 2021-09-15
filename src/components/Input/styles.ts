@@ -22,6 +22,7 @@ export const Container = styled.section<ContainerProps>`
 		padding: 1rem 0.5rem;
 
 		border: 2px solid var(--secondary-light);
+		color: var(--text-body);
 
 		${props =>
 			props.isErrored &&
@@ -32,14 +33,14 @@ export const Container = styled.section<ContainerProps>`
 		${props =>
 			props.isFocused &&
 			css`
-				border-color: var(--secondary);
-				color: var(--secondary);
+				border-color: var(--success);
+				color: var(--success);
 			`}
 
 		${props =>
 			props.isFilled &&
 			css`
-				color: var(--secondary);
+				color: var(--success);
 			`}
 	}
 
