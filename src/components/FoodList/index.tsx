@@ -11,6 +11,7 @@ import {
 	FoodControls,
 	FoodEditControl,
 	FoodDeleteControl,
+	Availability,
 } from './styles';
 
 const FoodList: React.FC = () => {
@@ -26,7 +27,7 @@ const FoodList: React.FC = () => {
 	return (
 		<Container>
 			{foods.map(food => (
-				<FoodCard key={food.id} available={food.available}>
+				<FoodCard key={food.id} isAvailable={food.available}>
 					<header>
 						<img src={food.image} alt={food.name} />
 					</header>
@@ -54,7 +55,9 @@ const FoodList: React.FC = () => {
 							</FoodDeleteControl>
 						</FoodControls>
 
-						<div>{food.available ? 'Available' : 'Unavailable'}</div>
+						<Availability isAvailable={food.available}>
+							{food.available ? 'Available' : 'Unavailable'}
+						</Availability>
 					</footer>
 				</FoodCard>
 			))}

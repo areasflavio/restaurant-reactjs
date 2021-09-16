@@ -12,9 +12,7 @@ export const Container = styled.div`
 
 	background: #1e90ff;
 
-	strong {
-		font-size: 1.5rem;
-
+	h1 {
 		color: var(--header-title);
 	}
 

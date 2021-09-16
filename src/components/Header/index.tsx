@@ -8,7 +8,7 @@ import { Container } from './styles';
 const Header: React.FC = () => {
 	return (
 		<Container>
-			<strong>Restaurant ReactJS</strong>
+			<h1>Restaurant ReactJS</h1>
 
 			<AddFoodModal
 				trigger={

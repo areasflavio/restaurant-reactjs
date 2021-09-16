@@ -1,7 +1,11 @@
 import styled, { css } from 'styled-components';
 
 interface IFoodCardProps {
-	available: boolean;
+	isAvailable: boolean;
+}
+
+interface IAvailabilityProps {
+	isAvailable: boolean;
 }
 
 export const Container = styled.main`
@@ -28,7 +32,7 @@ export const FoodCard = styled.div<IFoodCardProps>`
 	background: var(--secondary-light);
 
 	${props =>
-		!props.available &&
+		!props.isAvailable &&
 		css`
 			opacity: 0.4;
 		`}
@@ -120,6 +124,24 @@ export const FoodDeleteControl = styled.button`
 	transition: all 0.2s;
 
 	&:hover {
-		color: var(--secondary);
+		color: var(--danger);
 	}
+`;
+
+export const Availability = styled.strong<IAvailabilityProps>`
+	display: flex;
+
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+
+	background: var(--background);
+
+	${props =>
+		!props.isAvailable
+			? css`
+					color: var(--danger);
+			  `
+			: css`
+					color: var(--success);
+			  `}
 `;
