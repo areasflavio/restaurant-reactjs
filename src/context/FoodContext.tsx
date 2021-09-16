@@ -1,3 +1,6 @@
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
 import api from '../services/api';
@@ -45,6 +48,10 @@ const FoodProvider: React.FC = ({ children }) => {
 
 	async function handleUpdateFood(food: IFoodData): Promise<void> {
 		try {
+			if (!confirm('Are you sure you want to change the food?')) {
+				return;
+			}
+
 			const response = await api.put<IFoodData>(`/foods/${food.id}`, food);
 
 			setFoods(previousFoods =>
@@ -59,6 +66,10 @@ const FoodProvider: React.FC = ({ children }) => {
 
 	async function handleDeleteFood(id: number): Promise<void> {
 		try {
+			if (!confirm('Are you sure you want to delete the food?')) {
+				return;
+			}
+
 			await api.delete(`/foods/${id}`);
 
 			setFoods(previousFoods =>
