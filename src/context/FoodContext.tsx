@@ -2,6 +2,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-restricted-globals */
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 import api from '../services/api';
 
@@ -41,8 +42,16 @@ const FoodProvider: React.FC = ({ children }) => {
 			});
 
 			setFoods(previousFoods => [...previousFoods, response.data]);
+
+			toast('The plate was added!', {
+				type: 'success',
+			});
 		} catch (err) {
 			console.error(err);
+
+			toast('There was a problem with the operation, please try again.', {
+				type: 'error',
+			});
 		}
 	}
 
@@ -59,8 +68,16 @@ const FoodProvider: React.FC = ({ children }) => {
 					previousFood.id === food.id ? response.data : previousFood,
 				),
 			);
+
+			toast('The plate was updated!', {
+				type: 'success',
+			});
 		} catch (err) {
 			console.error(err);
+
+			toast('There was a problem with the operation, please try again.', {
+				type: 'error',
+			});
 		}
 	}
 
@@ -75,8 +92,16 @@ const FoodProvider: React.FC = ({ children }) => {
 			setFoods(previousFoods =>
 				previousFoods.filter(previousFood => previousFood.id !== id),
 			);
+
+			toast('The plate was removed!', {
+				type: 'success',
+			});
 		} catch (err) {
 			console.error(err);
+
+			toast('There was a problem with the operation, please try again.', {
+				type: 'error',
+			});
 		}
 	}
 
@@ -85,6 +110,8 @@ const FoodProvider: React.FC = ({ children }) => {
 			value={{ foods, handleAddFood, handleUpdateFood, handleDeleteFood }}
 		>
 			{children}
+
+			<ToastContainer />
 		</FoodContext.Provider>
 	);
 };
